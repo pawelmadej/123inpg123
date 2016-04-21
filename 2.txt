@@ -1,0 +1,67 @@
+class Complex
+{
+	public double re, im;		// odpowiednik definicji rekordu
+                                        // re - czêœæ rzeczywista liczby zespolonej
+                                        // im - czêœæ urojona liczby zespolonej
+
+	public double mod()		// definicja metody w klasie
+	{
+	  return Math.sqrt( this.re*this.re + this.im*this.im );
+	}	// this oznacza dany obiekt w klasie Test bedzie to z.re i z.im
+
+	public String toString()
+	{
+	  return "(" + this.re + ", " + this.im + ")" ;
+	}
+
+
+	public Complex coupled()
+	{
+	  Complex other;	// bufor dla this, ¿eby nie zmieni³
+	  other = new Complex();	// swojej wartoœci .im
+
+//!	  other = this; // b³êdne, ustawienie 'this' do zmiennej
+          other.re = this.re; // ustawiamy tylko wartoœci
+          other.im = this.im;
+
+	  other.im = -other.im;
+	  return other;
+	}
+}
+
+class Test
+{	
+    public static void main(String[] args) {
+	  Complex x, y, z;	// x,y,z reprezentuj¹ obiekty klasy Complex
+	  x = new Complex();	// tworzenie nowego obiekt "x"
+	  y = new Complex();
+	  z = new Complex();
+	
+	  x.re = 5.0;  x.im = 3.0;
+	  y.re = 4.0;  y.im = 4.0;
+
+	  System.out.print
+          ( "Liczby zesp.: " + x.toString() ); 	// do liczby mozna dodac 
+	  	// nie moze byc przecinkow	// string, wowczas liczba
+		// w tym nawiasie		// staje siê stringiem
+	
+	  System.out.println( ", " + y.toString() );
+	  System.out.println( "==========================================" );
+
+	  z.re  =  x.re + y.re; 
+	  z.im  =  x.im + y.im;
+	  System.out.println( "suma liczb: " + z.toString() );
+
+	  z.re  =  x.re*y.re - x.im*y.im;
+	  z.im  =  x.re*y.im + x.im*y.re;
+	  System.out.println( "iloczyn liczb: " + z.toString() );
+
+          System.out.println( "modul pierwszej: " + x.mod() );
+
+	  z = x.coupled();	// tworzy sprzê¿on¹ do x i wstawia ja
+				// w miejsce z
+
+	  System.out.println( x.toString() + "sprzezona do pierwszej: " + z.toString() );
+	  
+    }
+}

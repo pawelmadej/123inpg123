@@ -1,0 +1,58 @@
+class Vehicle
+{
+	private String owner;
+	public String model;
+	public int type; //1,2,3 - typy samochodow
+	private int reg;
+
+	public void setOwner(String s) { owner=s; }
+	public String getOwner() { return owner; }
+
+//	public String toString()
+//	{ return model + ", " + type + "\nReg.No." + reg +
+//                        ", wlasnosc: " + owner + "\n"; }
+
+	public String toString()
+	{ return model + ", " + typeToString() + "\nNr " + reg +
+                                               ", wlasnosc: " + owner + "\n"; }
+		
+	private static int count=1000; /* poniewaz jest static, z kazdego 
+					obiektu nastepuje odwolanie do tej
+					samej komorki pamieci */
+	
+	Vehicle() { reg = count++; } // konstruktor klasy 
+
+	private String typeToString()
+	{  
+	   if (type == 1) return "rower";
+	   else if (type == 2) return "motocykl";
+	   else if (type == 3) return "auto";
+	   else return "NIEZNANY!";
+	}
+}
+
+class CrashTest2
+{
+	public static void main(String[] args)
+	{
+	   Vehicle v1 = new Vehicle();
+	   Vehicle v2 = new Vehicle();
+	   Vehicle v3 = new Vehicle();
+	
+	   v1.model = "Syrena 105 Turbo";
+	   v1.type = 3;
+	   v1.setOwner("Jan Kowalski");
+	   System.out.println(v1);
+
+	   v2.model = "Harley D., 1965";
+	   v2.type = 2;
+	   v2.setOwner("Crazy Jackill");
+	   System.out.println(v2);
+
+	   v3.model = "Romet Wigry 3";
+	   v3.type = 1;
+	   v3.setOwner("John Brown");
+	   System.out.println(v3);
+	}
+
+}

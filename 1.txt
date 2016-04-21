@@ -1,0 +1,32 @@
+public class Proba {
+	public static void main(String[] args) {
+		Person p, q, r;
+		p = new Person();
+		q = new Person();
+		r = new Person();
+		
+		p.firstname = "Jan";
+		p.lastname = "Kowalski";
+		p.year = 1981;
+		p.PESEL = "81111224350";
+
+		q.firstname = "Anna";
+		q.lastname = "Nowak";
+		q.year = 1975;
+		q.PESEL = "75032074926";
+		
+		System.out.println( p.firstname + " " + p.lastname + ", " +
+		                     p.year + ", PESEL: " + p.PESEL );
+
+		System.out.println( q.firstname + " " + q.lastname + ", " +
+		                     q.year + ", PESEL: " + q.PESEL );
+
+	}
+}
+
+class Person
+{
+        public String firstname, lastname;
+	public int year;
+	public String PESEL;
+}
